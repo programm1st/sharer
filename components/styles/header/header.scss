@@ -1,0 +1,100 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 12px 16px;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 50;
+
+  &__input {
+    min-height: 45px;
+    width: 100%;
+  }
+}
+
+.header-input {
+  $self: &;
+
+  background-color: #fff;
+  border: 1px solid #f2f2f2;
+  border-radius: 18px;
+
+  display: flex;
+
+  padding: 16px;
+
+  position: relative;
+  overflow: hidden;
+
+  &__input {
+    background-color: transparent;
+    border: none;
+    border-radius: inherit;
+    display: block;
+
+    font-size: 14px;
+    line-height: 16px;
+
+    padding-left: 40px;
+    outline: none;
+    box-shadow: none;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 50;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+  }
+
+  &__icon {
+    display: block;
+
+    margin-right: 10px;
+
+    width: 16px;
+    height: 16px;
+  }
+
+  &__find {
+    margin-left: auto;
+  }
+}
+
+.header-input-deco {
+  &__placeholder {
+    color: #474747;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+  }
+}
+
+.header-input-find {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  z-index: 50;
+
+  &__icon {
+    display: block;
+    width: 22px;
+    height: 22px;
+  }
+}
