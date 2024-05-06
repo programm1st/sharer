@@ -81,8 +81,8 @@
 
 <script lang="ts">
     import { Button } from 'ant-design-vue';
-    import {tryRegistration, tryLogin} from "~/api/registration";
     import {useUserStore} from "~/store/user";
+    import {loginUser, registrationUser} from '~/api/fb/api'
 
     export default {
         components: {
@@ -96,28 +96,24 @@
         },
         setup() {
           const router = useRouter()
-          const login = ref('FTeam@mail.ru');
-          const password = ref('qwe');
+          const login = ref('');
+          const password = ref('');
           const errorMessage = ref('');
           const {setToken} = useUserStore();
           const onRegistrationClick = async () => {
-            const response = await tryRegistration(unref(login), unref(password))
+            const response = await registrationUser(unref(login), unref(password));
 
-            if (unref(response.status) === 'success') {
+            if (response?.error) {
+              errorMessage.value = response.error;
+            }
+
+            if (response?.status === 'success') {
               await router.push('/login');
-            } else {
-              errorMessage.value = unref(response.error)?.data?.detail;
             }
           }
           const onLoginClick = async () => {
-            const response = await tryLogin(unref(login), unref(password))
+            const response = await loginUser(unref(login), unref(password));
 
-            if (unref(response.data)?.access_token) {
-              setToken(unref(response.data).access_token);
-              await router.push('/')
-            } else {
-              errorMessage.value = unref(response.data).error;
-            }
           }
 
           const isRegistrationDisabled = computed(() => unref(password).length === 0 || unref(login).length === 0)

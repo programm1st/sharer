@@ -11,7 +11,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
     }
 
     console.log('token.value', token.value)
-    if (token.value && listForUnregistered.includes(to?.name)) {
-         return navigateTo('/');
-    }
+    /*if (token.value && listForUnregistered.includes(to?.name)) {
+         // return navigateTo('/');
+    }*/
 })
